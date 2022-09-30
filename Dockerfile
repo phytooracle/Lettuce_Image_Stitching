@@ -5,12 +5,11 @@ COPY . /opt
 
 USER root
 ARG DEBIAN_FRONTEND=noninteractive
+ARG PYTHON_VERSION=3.6.15
 RUN apt-get -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update -y
 
 RUN apt-get update 
-RUN apt-get install -y python3.7 \
-                       python3-pip \
-                       wget \
+RUN apt-get install -y wget \
                        gdal-bin \
                        libgdal-dev \
                        libspatialindex-dev \
@@ -31,12 +30,27 @@ RUN apt-get install -y python3.7 \
                        tk-dev \
                        libgdbm-dev \
                        libc6-dev \
-                       liblzma-dev
+                       liblzma-dev \
+                       libsm6 \
+                       libxext6 \
+                       libxrender-dev \
+                       libgl1-mesa-dev
 
+# Download and extract Python sources
+RUN cd /opt \
+    && wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz \                                              
+    && tar xzf Python-${PYTHON_VERSION}.tgz
+
+# Build Python and remove left-over sources
+RUN cd /opt/Python-${PYTHON_VERSION} \ 
+    && ./configure --enable-optimizations --with-ensurepip=install \
+    && make install \
+    && rm /opt/Python-${PYTHON_VERSION}.tgz /opt/Python-${PYTHON_VERSION} -rf
+
+# Install GDAL
 RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
 RUN apt-get install -y libgdal-dev
-
 RUN wget http://download.osgeo.org/libspatialindex/spatialindex-src-1.7.1.tar.gz
 RUN tar -xvf spatialindex-src-1.7.1.tar.gz
 RUN cd spatialindex-src-1.7.1/ && ./configure && make && make install
@@ -45,9 +59,9 @@ RUN add-apt-repository ppa:ubuntugis/ppa
 RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
 RUN export C_INCLUDE_PATH=/usr/include/gdal
 
-RUN apt-get update
-RUN apt-get install -y libsm6 libxext6 libxrender-dev
-RUN apt-get install -y libgl1-mesa-dev
-
-RUN python3.7 -m pip install -r /opt/requirements.txt
+# Install Python packages
+RUN pip3 install --upgrade pip
+RUN pip3 install -r /opt/requirements.txt
 RUN pip3 install --upgrade cython
+RUN apt-get install -y locales && locale-gen en_US.UTF-8
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'

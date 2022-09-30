@@ -1,30 +1,28 @@
-RUN pip3 install cython
-RUN pip3 install setuptools==59.6.0
-RUN pip3 install GDAL==3.0.4
-RUN pip3 install numpy==1.19.5
-RUN pip3 install matplotlib==3.3.4
-RUN pip3 install pandas==1.1.5
-
-RUN pip3 install ExifRead==2.3.1
-RUN pip3 install gpsphoto==2.2.3
-RUN pip3 install imageio==2.9.0
-RUN pip3 install networkx==2.5
-RUN pip3 install opencv-python==3.4.2.16
-RUN pip3 install opencv-contrib-python==3.4.2.16
-RUN pip3 install piexif==1.1.3
-RUN pip3 install Pillow==8.3.2
-RUN pip3 install pytz==2020.1
-RUN pip3 install PyWavelets==1.1.1
-RUN pip3 install scikit-image==0.17.2
-RUN pip3 install scikit-learn==0.23.2
-RUN pip3 install scipy==1.5.4
-RUN pip3 install six==1.15.0
-RUN pip3 install sklearn==0.0
-RUN pip3 install tifffile==2020.9.3
-
-RUN pip3 install tqdm==4.50.2
-RUN pip3 install detecto==1.2.1
-RUN pip3 install open3d==0.11.2
-RUN pip3 install utm==0.6.0
-RUN pip3 install tensorflow==2.6.0
-RUN pip3 install keras==2.6.0
+cython
+setuptools==59.6.0
+GDAL==3.0.4
+numpy==1.19.5
+matplotlib==3.3.4
+pandas==1.1.5
+ExifRead==2.3.1
+gpsphoto==2.2.3
+imageio==2.9.0
+networkx==2.5
+opencv-python==3.4.2.16
+opencv-contrib-python==3.4.2.16
+piexif==1.1.3
+Pillow==8.3.2
+pytz==2020.1
+PyWavelets==1.1.1
+scikit-image==0.17.2
+scikit-learn==0.23.2
+scipy==1.5.4
+six==1.15.0
+sklearn==0.0
+tifffile==2020.9.3
+tqdm==4.50.2
+detecto==1.2.1
+open3d==0.11.2
+utm==0.6.0
+tensorflow==2.6.0
+keras==2.6.0
