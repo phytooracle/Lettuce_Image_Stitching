@@ -21,7 +21,7 @@ RUN apt-get update
 RUN apt-get install -y libgdal-dev
 RUN pip3 install cython
 RUN pip3 install --upgrade cython
-RUN pip3 install setuptools
+RUN pip3 install setuptools==59.6.0
 RUN pip3 install GDAL==3.0.4
 RUN pip3 install numpy==1.19.1
 RUN pip3 install matplotlib==3.2.1
@@ -54,12 +54,12 @@ RUN pip3 install six==1.14.0
 RUN pip3 install sklearn==0.0
 RUN pip3 install tifffile==2020.6.3
 
-RUN pip3 install tqdm
-RUN pip3 install detecto
+RUN pip3 install tqdm==4.50.2
+RUN pip3 install detecto==1.2.1
 
 RUN apt-get install -y libgl1-mesa-dev
 
-RUN pip3 install open3d
-RUN pip3 install utm
-RUN pip3 install tensorflow
-RUN pip3 install keras
+RUN pip3 install open3d==0.13.0
+RUN pip3 install utm==0.6.0
+RUN pip3 install tensorflow==2.6.0
+RUN pip3 install keras==2.6.0
