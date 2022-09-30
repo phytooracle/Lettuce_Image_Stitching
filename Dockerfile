@@ -8,7 +8,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update -y
 
 RUN apt-get update 
-RUN apt-get install -y python3.6 \
+RUN apt-get install -y python3.7 \
                        python3-pip \
                        wget \
                        gdal-bin \
