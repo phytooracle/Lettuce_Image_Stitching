@@ -76,7 +76,7 @@ RUN pip3 install detecto==1.2.1
 
 RUN apt-get install -y libgl1-mesa-dev
 
-RUN pip3 install open3d==0.13.0
+RUN pip3 install open3d==0.11.2
 RUN pip3 install utm==0.6.0
 RUN pip3 install tensorflow==2.6.0
 RUN pip3 install keras==2.6.0
